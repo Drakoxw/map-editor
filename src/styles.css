@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import "tailwindcss";
+
+
+.p-button {
+  padding: 5px 10px;
+  font-size: 1rem;
+}
+
+.p-button-label {
+  font-weight: 500;
+}
+
+.p-radiobutton .p-radiobutton-box {
+  border: 1px solid #d1d5db;
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.p-radiobutton {
+  width: 17px !important;
+  height: 18px !important;
+}
+
+.p-inputtext {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.p-datepicker table td {
+  padding: 0;
+}
+
+.p-cascadeselect .p-cascadeselect-label.p-placeholder {
+  color: #6b7280;
+  padding: 5px 10px;
+}
+
+.p-cascadeselect-panel
+  .p-cascadeselect-items
+  .p-cascadeselect-item
+  .p-cascadeselect-item-content {
+  padding: 5px 10px;
+}
+
+.p-cascadeselect .p-cascadeselect-label {
+  padding: 5px 10px;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:first-child {
+  margin-top: 0;
+  padding: 5px 10px;
+}
+
+.p-inputswitch .p-inputswitch-slider:before {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.p-inputswitch {
+  width: 2.2rem;
+  height: 1.3rem;
+}
+
+.p-inputswitch .p-inputswitch-slider:before {
+  margin-top: -7px;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+  transform: translateX(0.7rem);
+}
