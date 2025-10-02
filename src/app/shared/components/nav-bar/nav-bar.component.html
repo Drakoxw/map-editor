@@ -1,0 +1,79 @@
+<nav class="bg-white shadow-lg h-16">
+  @if (showNav) {
+  <div class="max-w-[1400px] mx-auto pl-4 pr-8">
+    <div class="flex justify-between">
+      <div class="flex space-x-4">
+        <!-- Logo -->
+        <div>
+          <a
+            routerLink="/"
+            class="flex items-center p-2 text-gray-700 hover:text-gray-900"
+          >
+            <img
+              class="w-12 h-12"
+              src="/assets/img/DRAKO-LOGO.jpg"
+              alt="drako-logo"
+            />
+            <div class="flex flex-col ml-4">
+              <span class="font-bold text-xl sm:text-3xl"
+                >EDITOR DE MAPAS POI</span
+              >
+              <small
+                class="text-[8px] hidden text-end font-bold text-gray-700 sm:block"
+                >By DRAKO</small
+              >
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Navbar Desktop -->
+      <div class="hidden md:flex items-center space-x-1 font-medium">
+        @for (route of routes; track $index) {
+        <a
+          [routerLink]="route.path"
+          routerLinkActive="text-indigo-700 "
+          class="py-5 px-3 text-gray-700 transition-none hover:text-gray-900 hover:font-bold"
+          >{{ route.label }}</a
+        >
+        }
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button class="mobile-menu-button" (click)="toggleMenu()">
+          <svg
+            class="w-6 h-6 text-gray-700"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (showMenuMovile) {
+  <!-- Navbar Mobile -->
+  <div class="relative z-30 md:hidden">
+    <div
+      class="absolute bg-gray-100 right-4 rounded-md shadow py-1 min-w-40 font-medium"
+    >
+      @for (route of routes; track $index) {
+      <a
+        [routerLink]="route.path"
+        routerLinkActive="text-indigo-700"
+        class="block py-2 px-4 text-sm cursor-pointer hover:bg-gray-200"
+        >{{ route.label }}</a
+      >
+      }
+    </div>
+  </div>
+  } }
+</nav>
