@@ -1,6 +1,24 @@
-@import "primeicons/primeicons.css";
-@import "tailwindcss";
+@import 'primeicons/primeicons.css';
+@import 'tailwindcss';
+@plugin "tailwindcss-primeui";
 
+@layer base {
+  html {
+    @apply bg-white;
+    color-scheme: light only;
+  }
+
+  body {
+    @apply text-gray-900 bg-white;
+  }
+}
+
+.marker {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
 
 .p-button {
   padding: 5px 10px;
@@ -25,6 +43,11 @@
 .p-inputtext {
   margin: 0;
   padding: 5px 10px;
+  background: #f5f5f5 !important;
+  color: #818181 !important;
+  font-size: 1rem;
+  outline-color: transparent !important;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05) !important;
 }
 
 .p-datepicker table td {
@@ -36,10 +59,7 @@
   padding: 5px 10px;
 }
 
-.p-cascadeselect-panel
-  .p-cascadeselect-items
-  .p-cascadeselect-item
-  .p-cascadeselect-item-content {
+.p-cascadeselect-panel .p-cascadeselect-items .p-cascadeselect-item .p-cascadeselect-item-content {
   padding: 5px 10px;
 }
 
@@ -68,4 +88,22 @@
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
   transform: translateX(0.7rem);
+}
+
+.p-button-success {
+  background: #22c55e !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+}
+
+.p-button-danger, .p-confirmdialog-accept-button {
+  background: #ef4444 !important;
+  border: 1px solid #ef4444 !important;
+  color: #ffffff !important;
+}
+
+.p-button-secondary, .p-confirmdialog-reject-button {
+  background: #f1f5f9 !important;
+  border: 1px solid #f1f5f9 !important;
+  color: #475569 !important;
 }

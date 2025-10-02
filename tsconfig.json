@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strictNullChecks": false,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -13,7 +14,39 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "paths": {
+      "@home-module/*": [
+        "./src/app/modules/home/*"
+      ],
+      "@poi-editor-module/*": [
+        "./src/app/modules/poi-editor/*"
+      ],
+      "@about-module/*": [
+        "./src/app/modules/about/*"
+      ],
+      "@shared/*": [
+        "./src/app/shared/*"
+      ],
+      "@services/*": [
+        "./src/app/core/services/*"
+      ],
+      "@interfaces/*": [
+        "./src/app/core/interfaces/*"
+      ],
+      "@utils/*": [
+        "./src/app/shared/utils/*"
+      ],
+      "@pipes/*": [
+        "./src/app/shared/pipes/*"
+      ],
+      "@components/*": [
+        "./src/app/shared/components/*"
+      ],
+      "@constants/*": [
+        "./src/app/core/constants/*"
+      ]
+    },
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
