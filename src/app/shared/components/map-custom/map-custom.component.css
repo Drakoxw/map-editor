@@ -1,0 +1,69 @@
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+mgl-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para el tooltip de hover */
+:host ::ng-deep .map-tooltip .maplibregl-popup-content {
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+:host ::ng-deep .map-tooltip .maplibregl-popup-tip {
+  border-top-color: white;
+}
+
+/* Estilos para popups de click */
+:host ::ng-deep .maplibregl-popup-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:host ::ng-deep .maplibregl-popup-close-button {
+  font-size: 20px;
+  padding: 4px 8px;
+  color: #666;
+  transition: all 0.2s;
+}
+
+:host ::ng-deep .maplibregl-popup-close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Estilos para el tooltip */
+:host ::ng-deep .map-tooltip .maplibregl-popup-content {
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+:host ::ng-deep .map-tooltip .maplibregl-popup-tip {
+  border-top-color: white;
+}
+
+/* Estilos para popups generales */
+:host ::ng-deep .maplibregl-popup-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:host ::ng-deep .maplibregl-popup-close-button {
+  font-size: 20px;
+  padding: 4px 8px;
+  color: #666;
+}
+
+:host ::ng-deep .maplibregl-popup-close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}

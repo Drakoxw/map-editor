@@ -1,0 +1,33 @@
+<div class="map-wrapper">
+  <mgl-map
+    [style]="styleMap()"
+    [zoom]="[zoom()]"
+    [center]="center()"
+    [cursorStyle]="cursorStyle"
+    (mapLoad)="onMapLoad($event)"
+    (mapDragStart)="cursorStyle = 'grabbing'"
+    (mapDragEnd)="cursorStyle = 'grab'"
+    (mapIdle)="cursorStyle = 'grab'"
+    (mapClick)="onMapClick($event)"
+  >
+    <mgl-geojson-source id="pois-source" [data]="data()"></mgl-geojson-source>
+
+    <mgl-layer
+      id="pois-layer"
+      type="symbol"
+      source="pois-source"
+      [layout]="{
+        'icon-image': iconName(),
+        'icon-size': 1,
+        'icon-anchor': 'bottom',
+        'icon-allow-overlap': true
+      }"
+      (layerClick)="onPointClick($event)"
+      (layerMouseEnter)="showTooltip($event)"
+      (layerMouseLeave)="hideTooltip()"
+    >
+    </mgl-layer>
+  </mgl-map>
+
+  <ng-content></ng-content>
+</div>
