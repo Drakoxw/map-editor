@@ -9,6 +9,10 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 
 import { routes } from './app.routes';
+import { LocalStorageStoreService } from '@services/index';
+import { IStoreServiceInterface } from '@interfaces/index';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,10 +20,14 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimationsAsync(),
+    provideHttpClient(),
     providePrimeNG({
       theme: {
         preset: Aura,
       },
     }),
+    { provide: IStoreServiceInterface, useClass: LocalStorageStoreService },
+    ConfirmationService,
+    MessageService,
   ],
 };
