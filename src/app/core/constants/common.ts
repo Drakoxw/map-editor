@@ -1,7 +1,7 @@
 import { FeatureCollection, Point } from 'geojson';
 
 export const STYLE_MAP_STREET =
-  'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL';
+  'https://api.maptiler.com/maps/streets/style.json?key=2pAO4Wm6JhMJzzcCNToV';
 
 export const COLLECTION_VOID: FeatureCollection<Point> = {
   type: 'FeatureCollection',
