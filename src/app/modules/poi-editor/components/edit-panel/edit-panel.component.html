@@ -1,0 +1,47 @@
+<section class="edit-panel">
+  <div class="w-full flex justify-between items-center">
+    <span class="text-lg font-bold">Editar Punto de Interes</span>
+    <p-button icon="pi pi-times" [rounded]="true" (onClick)="onClose()" severity="secondary" />
+  </div>
+
+  <form [formGroup]="form">
+    <div class="mb-4">
+      <label for="name">Nombre</label>
+      <input
+        pInputText
+        type="text"
+        class="w-full"
+        id="name"
+        placeholder="Nombre"
+        formControlName="name"
+        [invalid]="form.get('name') | formControlError"
+      />
+      @if(form.get('name') | formControlError) {
+        <p-message severity="error" size="small" variant="simple">El nombre es requerido.</p-message>
+      }
+    </div>
+
+    <div class="mb-4">
+      <label for="category">Categoría</label>
+      <input
+        pInputText
+        type="text"
+        class="w-full"
+        id="category"
+        placeholder="Categoría"
+        formControlName="category"
+        [invalid]="form.get('category') | formControlError"
+      />
+      @if(form.get('category') | formControlError) {
+        <p-message severity="error" size="small" variant="simple">La categoría es requerida.</p-message>
+      }
+    </div>
+  </form>
+
+  <div class="flex justify-center items-center gap-4">
+    <p-button label="Guardar" (onClick)="onSubmit()" [raised]="true" severity="success" />
+    <p-button label="Eliminar" (onClick)="onDelete()" [raised]="true" severity="danger" />
+  </div>
+</section>
+
+<p-confirmdialog />

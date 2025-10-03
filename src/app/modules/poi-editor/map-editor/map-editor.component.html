@@ -1,0 +1,78 @@
+<div class="container py-4 w-full mx-auto">
+  <!-- Toolbar -->
+  <div class="toolbar w-full">
+    <div class="toolbar-section">
+      <h1>Editor POIs (puntos de interes)</h1>
+      <span class="count">{{ poiService.getPointCount() }} puntos</span>
+    </div>
+
+    <div class="toolbar-section">
+      <label for="file-input" class="p-ripple p-button p-button-raised p-button-success p-component">
+        <i class="pi pi-file-import"></i> Importar GeoJSON
+        <input
+          id="file-input"
+          type="file"
+          accept=".geojson,.json"
+          (change)="onFileSelected($event)"
+          hidden
+        />
+      </label>
+
+      <p-button
+        label="Export GeoJSON"
+        (onClick)="exportData()"
+        [disabled]="poiService.getPointCount() === 0"
+        [raised]="true"
+        severity="secondary"
+      />
+
+      <p-button
+        label="Limpiar todo"
+        (onClick)="clearAll()"
+        [disabled]="poiService.getPointCount() === 0"
+        [raised]="true"
+        severity="danger"
+      />
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="messages" *ngIf="validationMessage || errorMessage">
+    <div class="message success" *ngIf="validationMessage">
+      {{ validationMessage }}
+    </div>
+    <div class="message error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <!-- Map Container -->
+  <div class="map-wrapper">
+    <app-map-custom
+      [data]="data()"
+      [zoom]="12"
+      [reFitBounds]="reFitBounds"
+      [center]="[-75.5761, 6.2448]"
+      [autoFitBounds]="true"
+      activateTooltip
+      (mapClick)="onMapClick($event)"
+      (pointClick)="onPointClick($event)"
+      (mapReady)="onMapReady($event)"
+    >
+      @if (editingPoint) {
+      <app-edit-panel
+        (onUpdate)="onUpdatePoi($event)"
+        [editingPoint]="editingPoint"
+        (onClosePanel)="editingPoint = null"
+        (deletePoi)="deletePoint()"
+      />
+      }
+    </app-map-custom>
+  </div>
+
+  <!-- Instrucciones de uso -->
+  <app-banner-instructions />
+</div>
+
+<p-toast />
+<p-confirmdialog />
