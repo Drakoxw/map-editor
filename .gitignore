@@ -14,6 +14,9 @@ yarn-error.log
 # IDEs and editors
 .idea/
 .project
+.angular
+.vscode
+.windsurf
 .classpath
 .c9/
 *.launch
@@ -21,11 +24,6 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 .history/*
 
 # Miscellaneous
