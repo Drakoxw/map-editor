@@ -31,6 +31,7 @@ export interface CoordToPoint {
 export interface Funcionalities {
   title: string;
   color: string;
+  class: string;
   items: {
     title: string;
     description: string;
