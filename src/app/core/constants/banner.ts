@@ -1,4 +1,4 @@
-import { Funcionalities } from "@interfaces/index";
+import { Funcionalities } from '@interfaces/index';
 
 export const SERVICE_GEO_JSON_VALIDATOR = {
   title: 'IStoreServiceInterface',
@@ -6,10 +6,8 @@ export const SERVICE_GEO_JSON_VALIDATOR = {
   color: 'orange',
   description: 'Métodos Obligatorios:',
   code: 'provide: IStoreServiceInterface, useClass: AnyStoreService',
-  list: [
-    'IStoreServiceInterface'
-  ]
-}
+  list: ['IStoreServiceInterface'],
+};
 
 export const FUNCIONALITIES_ANGULAR: Funcionalities = {
   title: 'Angular y dependencias',
@@ -20,6 +18,7 @@ export const FUNCIONALITIES_ANGULAR: Funcionalities = {
       description: 'Al crear el proyecto se creo sin la libreria zonejs',
     },
   ],
+  class: '',
 };
 
 export const FUNCIONALITIES_CORE: Funcionalities = {
@@ -43,6 +42,7 @@ export const FUNCIONALITIES_CORE: Funcionalities = {
       description: 'Remover POIs con diálogo de confirmación',
     },
   ],
+  class: 'bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold',
 };
 
 export const FUNCIONALITIES_ADVANCED: Funcionalities = {
@@ -66,11 +66,13 @@ export const FUNCIONALITIES_ADVANCED: Funcionalities = {
       description: 'Manejo robusto de errores con reportes detallados',
     },
   ],
+  class: 'bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold',
 };
 
 export const FUNCIONALITIES_UX: Funcionalities = {
   title: 'Mejoras de UX',
   color: 'purple',
+  class: 'bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold',
   items: [
     {
       title: 'Tooltips al Pasar el Mouse',
@@ -91,7 +93,7 @@ export const FUNCIONALITIES_UX: Funcionalities = {
   ],
 };
 
-export const FUNCTIONALITIES_TECHNICAL = {
+export const FUNCTIONALITIES_TECHNICAL: Funcionalities = {
   title: 'Funcionalidades Técnicas',
   color: 'orange',
   items: [
@@ -112,4 +114,5 @@ export const FUNCTIONALITIES_TECHNICAL = {
       description: 'Componente de mapa genérico con inputs',
     },
   ],
+  class: 'bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-semibold',
 };

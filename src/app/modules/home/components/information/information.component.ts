@@ -7,6 +7,7 @@ import {
   FUNCTIONALITIES_TECHNICAL,
   FUNCIONALITIES_UX,
 } from '@constants/index';
+import { Funcionalities } from '@interfaces/index';
 
 @Component({
   selector: 'app-information',
@@ -15,7 +16,7 @@ import {
   imports: [NgTemplateOutlet],
 })
 export class InformationComponent {
-  public functionalities = [
+  public functionalities: Funcionalities[] = [
     FUNCIONALITIES_ADVANCED,
     FUNCIONALITIES_CORE,
     FUNCTIONALITIES_TECHNICAL,

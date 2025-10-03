@@ -1,5 +1,5 @@
 <!-- Resumen -->
-<section id="resumen" class="mb-16 ">
+<section id="resumen" class="mb-16">
   <h2 class="text-3xl font-bold mb-6 text-gray-800">Resumen del Proyecto</h2>
   <div class="bg-white rounded-lg shadow-md p-8 force-ajust">
     <p class="text-lg text-gray-700 mb-4">
@@ -9,7 +9,6 @@
     </p>
 
     <div class="grid md:grid-cols-2 gap-6 mt-8">
-
       <div class="bg-purple-50 rounded-lg p-6">
         <div class="text-purple-600 font-bold text-lg mb-2">Stack Tecnológico</div>
         <ul class="text-sm text-gray-700 space-y-1">
@@ -200,9 +199,7 @@
     @for (funcionality of functionalities; track funcionality.title) {
     <div class="bg-white rounded-lg shadow-md p-6">
       <div class="flex items-center mb-4">
-        <span [class]="'bg-' + funcionality.color + '-100 px-3 py-1 rounded-full text-sm font-semibold'">{{
-          funcionality.title
-        }}</span>
+        <span [class]="funcionality.class">{{ funcionality.title }}</span>
       </div>
       <ul class="space-y-3">
         @for (item of funcionality.items; track item.title) {
@@ -210,6 +207,7 @@
           <ng-container
             *ngTemplateOutlet="svgTemplate; context: { color: funcionality.color }"
           ></ng-container>
+
           <div>
             <p class="font-semibold text-gray-800">{{ item.title }}</p>
             <p class="text-sm text-gray-600">{{ item.description }}</p>
@@ -223,8 +221,10 @@
 </section>
 
 <ng-template #svgTemplate let-color="color">
+  @let styeClass = `text-${color}-500`;
   <svg
-    [class]="'w-5 h-5 text-' + color + '-500 mr-3 mt-0.5 flex-shrink-0'"
+    class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"
+    [class]="styeClass"
     fill="currentColor"
     viewBox="0 0 20 20"
   >
