@@ -1,0 +1,237 @@
+<!-- Resumen -->
+<section id="resumen" class="mb-16 ">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Resumen del Proyecto</h2>
+  <div class="bg-white rounded-lg shadow-md p-8 force-ajust">
+    <p class="text-lg text-gray-700 mb-4">
+      Aplicación web construida con <strong>Angular 18+</strong> y <strong>MapLibre GL JS</strong>
+      que permite a los usuarios crear, editar y gestionar Puntos de Interés (POIs) en un mapa
+      interactivo.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-8">
+
+      <div class="bg-purple-50 rounded-lg p-6">
+        <div class="text-purple-600 font-bold text-lg mb-2">Stack Tecnológico</div>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>• <b>Angular 20</b> con signals</li>
+          <li>• <b>Abstinencia de ZoneJs</b></li>
+          <li>• TypeScript</li>
+          <li>• MapLibre GL JS</li>
+          <li>• Tailwind CSS</li>
+          <li>• NgPrime</li>
+          <li>• RxJS</li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-50 rounded-lg p-6">
+        <div class="text-blue-600 font-bold text-lg mb-2">Características Clave</div>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>• Mapa interactivo</li>
+          <li>• Operaciones CRUD</li>
+          <li>• Importar/Exportar GeoJSON</li>
+          <li>• Persistencia local</li>
+          <li>• Validación de datos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Arquitectura -->
+<section id="arquitectura" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Arquitectura y Diseño</h2>
+
+  <div class="bg-white rounded-lg shadow-md p-8 mb-6">
+    <h3 class="text-xl font-semibold mb-4 text-gray-800">Arquitectura de Servicios</h3>
+    <p class="text-gray-700 mb-6">
+      La aplicación sigue una arquitectura de modulos orientada a servicios con clara separación de
+      responsabilidades:
+    </p>
+
+    <div class="space-y-6">
+      <!-- GeoJSON Validator Service -->
+      <div class="border-l-4 border-purple-500 pl-6 py-2">
+        <h4 class="font-bold text-lg text-purple-700 mb-2">GeoJsonValidatorService</h4>
+        <p class="text-sm text-gray-600 mb-3">
+          Responsable de validar datos GeoJSON y filtrar características inválidas.
+        </p>
+        <div class="bg-gray-50 rounded p-4">
+          <p class="font-mono text-xs text-gray-700 mb-2"><strong>Métodos Principales:</strong></p>
+          <ul class="font-mono text-xs text-gray-600 space-y-1">
+            <li>• validate(data: any): ValidationResult</li>
+            <li>• validateFeature(feature: any)</li>
+            <li>• createFeature(lon, lat, name, category)</li>
+          </ul>
+        </div>
+
+        <div class="mt-3 bg-yellow-50 border border-yellow-200 rounded p-3">
+          <p class="text-xs text-yellow-800"><strong>Reglas de Validación:</strong></p>
+          <ul class="text-xs text-yellow-700 mt-2 space-y-1">
+            <li>• Solo geometrías tipo Point son aceptadas</li>
+            <li>• Coordenadas: -180 ≤ lng ≤ 180, -90 ≤ lat ≤ 90</li>
+            <li>• Propiedades requeridas: name (string), category (string)</li>
+            <li>• Features inválidos se descartan con reporte de errores</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Storage Service -->
+      <div class="border-l-4 border-blue-500 pl-6 py-2">
+        <div class="flex gap-1 flex-wrap">
+          <h4 class="font-bold flex text-lg text-blue-700 mb-2">LocalStorageStoreService</h4>
+          <span class="text-xs text-blue-600"
+            >(Implementación abstracta de interface
+            <strong><code>IStoreServiceInterface</code></strong> )</span
+          >
+        </div>
+        <p class="text-sm text-gray-600 mb-3">
+          Maneja la persistencia de datos usando localStorage y funcionalidad de exportación.
+        </p>
+        <div class="bg-gray-50 rounded p-4">
+          <p class="font-mono text-xs text-gray-700 mb-2"><strong>Métodos Principales:</strong></p>
+          <ul class="font-mono text-xs text-gray-600 space-y-1">
+            <li>• save(data: FeatureCollection): void</li>
+            <li>• load(): FeatureCollection | null</li>
+            <li>• clear(): void</li>
+            <li>• export(data, filename): void</li>
+          </ul>
+        </div>
+        <div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3">
+          <p class="text-xs text-blue-800">
+            <strong>Clave de Storage:</strong>
+            <code class="bg-blue-100 px-2 py-1 rounded">poi_editor_state</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- POI Manager Service -->
+      <div class="border-l-4 border-green-500 pl-6 py-2">
+        <h4 class="font-bold text-lg text-green-700 mb-2">PoiManagerService</h4>
+        <p class="text-sm text-gray-600 mb-3">
+          Servicio principal de lógica de negocio que gestiona operaciones y estado de POIs.
+        </p>
+        <div class="bg-gray-50 rounded p-4">
+          <p class="font-mono text-xs text-gray-700 mb-2"><strong>Métodos Principales:</strong></p>
+          <ul class="font-mono text-xs text-gray-600 space-y-1">
+            <li>• importGeoJson(data): ValidationResult</li>
+            <li>• addPoint(lng, lat, name, category)</li>
+            <li>• updatePoint(index, updates)</li>
+            <li>• deletePoint(index)</li>
+            <li>• save() / export() / clear()</li>
+          </ul>
+        </div>
+        <div class="mt-3 bg-green-50 border border-green-200 rounded p-3">
+          <p class="text-xs text-green-800">
+            <strong>Usa RxJS BehaviorSubject</strong> para gestión reactiva de datos
+          </p>
+        </div>
+      </div>
+
+      <!-- Storage Service -->
+      <div class="border-l-4 border-red-500 pl-6 py-2">
+        <div class="flex gap-1">
+          <h4 class="font-bold flex text-lg text-red-700 mb-2">IStoreServiceInterface</h4>
+          <span class="text-xs text-red-600">(interface)</span>
+        </div>
+        <code> provide: IStoreServiceInterface, useClass: AnyStoreService </code>
+        <div class="bg-gray-50 rounded p-4">
+          <p class="font-mono text-xs text-gray-700 mb-2"><strong>Métodos Obligatorios:</strong></p>
+          <ul class="font-mono text-xs text-gray-600 space-y-1">
+            <li>• save(data: FeatureCollection): void</li>
+            <li>• load(): FeatureCollection | null</li>
+            <li>• clear(): void</li>
+            <li>• export(data, filename): void</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arquitectura de Componentes -->
+  <div class="bg-white rounded-lg shadow-md p-8">
+    <h3 class="text-xl font-semibold mb-4 text-gray-800">Arquitectura de Componentes</h3>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="border border-gray-200 rounded-lg p-6">
+        <h4 class="font-bold text-purple-700 mb-3">MapCustomComponent</h4>
+        <p class="text-sm text-gray-600 mb-4">Componente de mapa genérico y reutilizable</p>
+        <div class="space-y-2 text-xs">
+          <div>
+            <span class="font-semibold text-gray-700">Inputs:</span>
+            <ul class="ml-4 mt-1 text-gray-600">
+              <li>• data, center, zoom, styleMap</li>
+              <li>• toleranceMultiplier, autoFitBounds</li>
+              <li>• enablePointClick, enableMapClick</li>
+            </ul>
+          </div>
+          <div>
+            <span class="font-semibold text-gray-700">Outputs:</span>
+            <ul class="ml-4 mt-1 text-gray-600">
+              <li>• mapClick, pointClick, mapReady</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-gray-200 rounded-lg p-6">
+        <h4 class="font-bold text-blue-700 mb-3">MapEditorComponent</h4>
+        <p class="text-sm text-gray-600 mb-4">Componente principal de la aplicación</p>
+        <div class="space-y-2 text-xs">
+          <div>
+            <span class="font-semibold text-gray-700">Características:</span>
+            <ul class="ml-4 mt-1 text-gray-600">
+              <li>• Barra de herramientas Import/Export</li>
+              <li>• Panel de edición (overlay)</li>
+              <li>• Mensajes de validación</li>
+              <li>• Gestión de puntos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Funcionalidades -->
+<section id="funcionalidades" class="mb-16">
+  <h2 class="text-3xl font-bold mb-6 text-gray-800">Funcionalidades Implementadas</h2>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    @for (funcionality of functionalities; track funcionality.title) {
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <div class="flex items-center mb-4">
+        <span [class]="'bg-' + funcionality.color + '-100 px-3 py-1 rounded-full text-sm font-semibold'">{{
+          funcionality.title
+        }}</span>
+      </div>
+      <ul class="space-y-3">
+        @for (item of funcionality.items; track item.title) {
+        <li class="flex items-start">
+          <ng-container
+            *ngTemplateOutlet="svgTemplate; context: { color: funcionality.color }"
+          ></ng-container>
+          <div>
+            <p class="font-semibold text-gray-800">{{ item.title }}</p>
+            <p class="text-sm text-gray-600">{{ item.description }}</p>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+</section>
+
+<ng-template #svgTemplate let-color="color">
+  <svg
+    [class]="'w-5 h-5 text-' + color + '-500 mr-3 mt-0.5 flex-shrink-0'"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+      clip-rule="evenodd"
+    />
+  </svg>
+</ng-template>
